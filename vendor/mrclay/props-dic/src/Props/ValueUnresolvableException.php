@@ -2,8 +2,8 @@
 
 namespace Props;
 
-use Psr\Container\ContainerExceptionInterface;
+use Interop\Container\Exception\ContainerException;
 
-class ValueUnresolvableException extends \Exception implements ContainerExceptionInterface
+class ValueUnresolvableException extends \Exception implements ContainerException
 {
 }

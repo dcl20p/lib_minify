@@ -2,8 +2,8 @@
 
 namespace Props;
 
-use Psr\Container\ContainerExceptionInterface;
+use Interop\Container\Exception\ContainerException;
 
-class FactoryUncallableException extends \Exception implements ContainerExceptionInterface
+class FactoryUncallableException extends \Exception implements ContainerException
 {
 }

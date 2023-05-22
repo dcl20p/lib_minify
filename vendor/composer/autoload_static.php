@@ -25,7 +25,6 @@ class ComposerStaticInit6fc0eb4c41948ace9aad3d6851bb34a9
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
-            'Prophecy\\' => 9,
         ),
         'M' => 
         array (
@@ -39,6 +38,7 @@ class ComposerStaticInit6fc0eb4c41948ace9aad3d6851bb34a9
         'I' => 
         array (
             'Intervention\\Httpauth\\' => 22,
+            'Interop\\Container\\' => 18,
         ),
         'D' => 
         array (
@@ -61,15 +61,11 @@ class ComposerStaticInit6fc0eb4c41948ace9aad3d6851bb34a9
         ),
         'Psr\\Log\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+            0 => __DIR__ . '/..' . '/psr/log/src',
         ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'Prophecy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
         'Monolog\\' => 
         array (
@@ -86,6 +82,10 @@ class ComposerStaticInit6fc0eb4c41948ace9aad3d6851bb34a9
         'Intervention\\Httpauth\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/httpauth/src/Intervention/Httpauth',
+        ),
+        'Interop\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -106,6 +106,11 @@ class ComposerStaticInit6fc0eb4c41948ace9aad3d6851bb34a9
             'Props\\' => 
             array (
                 0 => __DIR__ . '/..' . '/mrclay/props-dic/src',
+                1 => __DIR__ . '/..' . '/mrclay/props-dic/test',
+            ),
+            'Prophecy\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
             'Pimple' => 
             array (
@@ -645,13 +650,6 @@ class ComposerStaticInit6fc0eb4c41948ace9aad3d6851bb34a9
         'lessc_formatter_compressed' => __DIR__ . '/..' . '/marcusschwarz/lesserphp/lessc.inc.php',
         'lessc_formatter_lessjs' => __DIR__ . '/..' . '/marcusschwarz/lesserphp/lessc.inc.php',
         'lessc_parser' => __DIR__ . '/..' . '/marcusschwarz/lesserphp/lessc.inc.php',
-        'scss_formatter' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
-        'scss_formatter_compressed' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
-        'scss_formatter_crunched' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
-        'scss_formatter_nested' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
-        'scss_parser' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
-        'scss_server' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
-        'scssc' => __DIR__ . '/..' . '/leafo/scssphp/classmap.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

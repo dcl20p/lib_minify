@@ -2,7 +2,7 @@
 /**
  * SCSSPHP
  *
- * @copyright 2012-2015 Leaf Corcoran
+ * @copyright 2012-2018 Leaf Corcoran
  *
  * @license http://opensource.org/licenses/MIT MIT
  *
@@ -12,9 +12,10 @@
 namespace Leafo\ScssPhp\Formatter;
 
 use Leafo\ScssPhp\Formatter;
+use Leafo\ScssPhp\Formatter\OutputBlock;
 
 /**
- * SCSS debug formatter
+ * Debug formatter
  *
  * @author Anthon Pang <anthon.pang@gmail.com>
  */
@@ -32,6 +33,7 @@ class Debug extends Formatter
         $this->close = ' }';
         $this->tagSeparator = ', ';
         $this->assignSeparator = ': ';
+        $this->keepSemicolons = true;
     }
 
     /**
@@ -45,48 +47,48 @@ class Debug extends Formatter
     /**
      * {@inheritdoc}
      */
-    protected function blockLines($block)
+    protected function blockLines(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
         if (empty($block->lines)) {
-            echo "{$indent}block->lines: []\n";
+            $this->write("{$indent}block->lines: []\n");
 
             return;
         }
 
         foreach ($block->lines as $index => $line) {
-            echo "{$indent}block->lines[{$index}]: $line\n";
+            $this->write("{$indent}block->lines[{$index}]: $line\n");
         }
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function blockSelectors($block)
+    protected function blockSelectors(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
         if (empty($block->selectors)) {
-            echo "{$indent}block->selectors: []\n";
+            $this->write("{$indent}block->selectors: []\n");
 
             return;
         }
 
         foreach ($block->selectors as $index => $selector) {
-            echo "{$indent}block->selectors[{$index}]: $selector\n";
+            $this->write("{$indent}block->selectors[{$index}]: $selector\n");
         }
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function blockChildren($block)
+    protected function blockChildren(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
         if (empty($block->children)) {
-            echo "{$indent}block->children: []\n";
+            $this->write("{$indent}block->children: []\n");
 
             return;
         }
@@ -103,12 +105,14 @@ class Debug extends Formatter
     /**
      * {@inheritdoc}
      */
-    protected function block($block)
+    protected function block(OutputBlock $block)
     {
         $indent = $this->indentStr();
 
-        echo "{$indent}block->type: {$block->type}\n" .
-             "{$indent}block->depth: {$block->depth}\n";
+        $this->write("{$indent}block->type: {$block->type}\n" .
+             "{$indent}block->depth: {$block->depth}\n");
+
+        $this->currentBlock = $block;
 
         $this->blockSelectors($block);
         $this->blockLines($block);
