@@ -2,9 +2,8 @@
 
 namespace Props;
 
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
+use Interop\Container\Exception\NotFoundException as NotFound;
 
-class NotFoundException extends \Exception implements ContainerExceptionInterface, NotFoundExceptionInterface
+class NotFoundException extends \Exception implements NotFound
 {
 }

@@ -2,8 +2,8 @@
 
 namespace Props;
 
-use Psr\Container\ContainerExceptionInterface;
+use Interop\Container\Exception\ContainerException;
 
-class BadMethodCallException extends \Exception implements ContainerExceptionInterface
+class BadMethodCallException extends \Exception implements ContainerException
 {
 }

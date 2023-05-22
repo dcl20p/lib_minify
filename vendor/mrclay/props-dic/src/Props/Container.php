@@ -2,7 +2,7 @@
 
 namespace Props;
 
-use Psr\Container\ContainerInterface;
+use Interop\Container\ContainerInterface;
 
 /**
  * Container holding values which can be resolved upon reading and optionally stored and shared

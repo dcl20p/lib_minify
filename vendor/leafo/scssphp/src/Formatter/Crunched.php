@@ -2,7 +2,7 @@
 /**
  * SCSSPHP
  *
- * @copyright 2012-2015 Leaf Corcoran
+ * @copyright 2012-2018 Leaf Corcoran
  *
  * @license http://opensource.org/licenses/MIT MIT
  *
@@ -12,9 +12,10 @@
 namespace Leafo\ScssPhp\Formatter;
 
 use Leafo\ScssPhp\Formatter;
+use Leafo\ScssPhp\Formatter\OutputBlock;
 
 /**
- * SCSS crunched formatter
+ * Crunched formatter
  *
  * @author Anthon Pang <anthon.pang@gmail.com>
  */
@@ -32,24 +33,13 @@ class Crunched extends Formatter
         $this->close = '}';
         $this->tagSeparator = ',';
         $this->assignSeparator = ':';
+        $this->keepSemicolons = false;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function stripSemicolon(&$lines)
-    {
-        if (($count = count($lines))
-            && substr($lines[$count - 1], -1) === ';'
-        ) {
-            $lines[$count - 1] = substr($lines[$count - 1], 0, -1);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function blockLines($block)
+    public function blockLines(OutputBlock $block)
     {
         $inner = $this->indentStr();
 
@@ -61,10 +51,10 @@ class Crunched extends Formatter
             }
         }
 
-        echo $inner . implode($glue, $block->lines);
+        $this->write($inner . implode($glue, $block->lines));
 
         if (! empty($block->children)) {
-            echo $this->break;
+            $this->write($this->break);
         }
     }
 }
